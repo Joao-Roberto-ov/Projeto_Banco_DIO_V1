@@ -5,6 +5,16 @@ LIMITE_VALOR_SAQUE = 500
 saques_realizados = 0
 extrato = []
 
+menu = """
+------ Boas Vindas ao Banco DIO ------
+
+[1] Depositar
+[2] sacar
+[3] Visualizar Extrato
+[4] Sair
+
+Selecione a opção que deseja realizar: """
+
 def sacar():
     global dinheiro_disponivel_conta, LIMITE_VALOR_SAQUE, saques_realizados
 
@@ -44,15 +54,7 @@ def depositar():
 
 while True:
 
-    opcao = int(input("""
------- Boas Vindas ao Banco DIO ------
-
-[1] Depositar
-[2] sacar
-[3] Visualizar Extrato
-[4] Sair
-
-Selecione a opção que deseja realizar: """))
+    opcao = int(input(menu))
 
     if opcao == 1:
         depositar()
