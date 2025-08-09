@@ -6,6 +6,7 @@ saques_realizados = 0
 extrato = []
 nome_extrato = " EXTRATO "
 nome_modificado = nome_extrato.center(58,"=")
+simbolos_extrato = "=========================================================="
 menu = """\n
 ------ Boas Vindas ao Banco DIO ------
 
@@ -34,6 +35,9 @@ def sacar():
     elif valor_sacado > LIMITE_VALOR_SAQUE:
         print("Limite máximo de saque de R$500,00 ultrapassado.")
 
+    elif valor_sacado <= 0:
+        print("Valor inválido para saque.")
+
     else:
         dinheiro_disponivel_conta -= valor_sacado
         print(f"Saldo disponível na conta: R${dinheiro_disponivel_conta:.2f}")
@@ -45,11 +49,14 @@ def mostra_extrato():
 
     if not extrato:
         print(f"\n{nome_modificado}")
-        print("Nenhuma movimentação realizada na conta.")
+        print(f"Nenhuma movimentação realizada na conta.\n{simbolos_extrato}")
     else:
         print(f"\n{nome_modificado}")
         for item in extrato:
             print(f"{item}")
+
+        print(f"\nSaldo disponível: R${dinheiro_disponivel_conta:.2f}")
+        print(simbolos_extrato)
 
 def depositar():
     global dinheiro_disponivel_conta
@@ -67,7 +74,7 @@ def depositar():
         print(f"Saldo disponível na conta: R${dinheiro_disponivel_conta:.2f}")
 
     else:
-        print("Valor inválido para depósito.")
+        print("Tentativa de depósito falhou. Valor invalido!")
 
 while True:
 
